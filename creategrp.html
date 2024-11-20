@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #cdffd8 20%, #94b9ff 90%);
+            text-align: center;
+            margin: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .username {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .username img {
+            height: 24px;
+            margin-left: 5px;
+        }
+
+        .side-panel {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            z-index: 2;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-panel h2, .side-panel h3 {
+            margin: 10px 0;
+        }
+
+        .side-panel a {
+            display: block;
+            margin: 5px 0;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .side-panel a:hover {
+            color: #0073e6;
+        }
+        .breadcrumb {
+            text-align: left;
+            margin-left: 0px;
+        }
+
+        .container {
+            width: 60%;
+            max-width: 600px;
+            border: 2px solid #666;
+            border-radius: 10px;
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(to right, #b2f7ef, #82cfff);
+        }
+
+
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #d9d9d9;
+            border-radius: 50%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #666;
+            border-radius: 20px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group input {
+            flex: 1;
+        }
+
+        .add-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #82cfff;
+            border: 2px solid #666;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .create-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #82cfff;
+            border: 2px solid #666;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .create-btn:hover {
+            background-color: #b2f7ef;
+        }
+    </style>
+    <script>
+        function togglePanel() {
+            const panel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.overlay');
+            if (panel.style.left === '0px') {
+                panel.style.left = '-250px';
+                overlay.style.display = 'none';
+            } else {
+                panel.style.left = '0px';
+                overlay.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="overlay" onclick="togglePanel()"></div>
+    
+    <div class="header">
+        <img src="/images/icon.png" alt="Logo" onclick="togglePanel()">
+        <div class="breadcrumb">
+            <strong>Dashboard &gt; Groups &gt; Create Group</strong>
+        </div>
+        <div class="username">
+            username
+            <img src="/images/profile.png" alt="User Icon">
+        </div>
+    </div>
+
+    <div class="side-panel">
+        <h2>My Schedule</h2>
+        <a href="./inputsc.html">Input Schedule</a>
+        <a href="./editsc.html">Edit Schedule</a>
+        <a href="">Delete Schedule</a>
+        <h3>Groups</h3>
+        <a href="./creategrp.html">Create Group</a>
+        <a href="./viewgroup.html">View Group</a>
+    </div>
+        <div class="container">
+        <div class="form-group">
+            <input type="text" id="groupName" placeholder="Enter Group Name">
+        </div>
+
+        <div class="form-group" id="memberInputs">
+            <div class="input-group">
+                <input type="text" placeholder="Enter Registration Number">
+                <div class="add-btn" onclick="addMemberInput()">+</div>
+            </div>
+        </div>
+
+        <button class="create-btn" onclick="createGroup()">Create Group</button>
+
+
+    <script>
+        function addMemberInput() {
+            const memberInputs = document.getElementById('memberInputs');
+            const newInputGroup = document.createElement('div');
+            newInputGroup.classList.add('input-group');
+            newInputGroup.innerHTML = `
+                <input type="text" placeholder="Enter Registration Number">
+                <div class="add-btn" onclick="addMemberInput()">+</div>
+            `;
+            memberInputs.appendChild(newInputGroup);
+        }
+
+        function createGroup() {
+            const groupName = document.getElementById('groupName').value;
+            const memberInputs = document.querySelectorAll('#memberInputs input');
+            const registrationNumbers = Array.from(memberInputs).map(input => input.value);
+
+            console.log('Group Name:', groupName);
+            console.log('Registration Numbers:', registrationNumbers);
+
+            alert('Group created successfully!');
+            // Add additional logic to process or save the data as needed
+        }
+    </script>
+        </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+body{
+    background: linear-gradient(to right, #cdffd8 20%, #94b9ff 90%);
+    margin:0px;
+    padding:0px;
+    font-family: "Nunito", sans-serif;font-weight:bold;
+  
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+/* +++++++++++++++++++++NAVBAR SECTION++++++++++++++++++++++ */
+
+nav{
+    background-color: #ffffff;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-elements{
+display: flex;
+font-size: 19px;
+align-items: center;
+}
+.nav-elements li{
+    list-style: none;
+    margin: 20px;
+}
+.nav-icon{
+    width: 50px; /* The image will never exceed the width of its container */
+    height: 50px;
+    margin-left: 10px;
+    color: black;
+}
+#section2-position{
+    margin-right: 30px;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+.main-container{
+    display: flex;
+    height: 88vh; /* GRADIENT COLOR */
+    /* background: linear-gradient(to right, #cdffd8 20%, #94b9ff 90%); */
+    position: relative;
+}
+.left-container{
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 20px;
+}
+
+.left-container h1{
+    font-size: 50px;
+    margin: 0px;
+}
+.left-container p{
+   font-weight: 400;
+   word-spacing: 5px;
+}
+.right-container{
+    width: 50%;
+    padding-top: 20px;
+}
+
+.right-container img{
+    height: 235px;
+    width: 235px;
+    display: flex;
+    /* object-fit: cover; */
+    /* background-color: rgba(128, 125, 125, 0.701); */
+}
+.top{
+    display: flex;
+    flex-direction: column; 
+    /* align-items: flex-start; */
+    padding-left: 60px;
+    height: 45%;
+    margin-top:30px;
+    /* padding-top: 0px; */
+    /* z-index: 10;  */
+}
+.top img{
+    /* position: relative;  To allow absolute positioning of child elements */
+    width: 300px;
+    height: 300px;
+    z-index: 10; 
+}
+.bottom img{
+    position: absolute; /* Absolute position to move it within the first-div */
+    bottom: 0;   /* Positioning it inside the first div */
+    right: 0;
+    width: 200px;
+    height: 200px;
+}
+.bottom{
+    /* padding-left: 45%; */
+    margin-top: 5px;
+    height: 45%;
+    /* padding-top: 200px; */
+}
+
+
+/* +++++++++++++++++++++++++++++ABOUT US CSS++++++++++++++++++ */
+

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #cdffd8 20%, #94b9ff 90%);
+      color: #000;
+      margin: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            /* padding: 20px; */
+        }
+        .header img {
+            height: 30px;
+            cursor: pointer;
+        }
+        .username{
+            font-size: 18px;
+            text-align: center;
+            display: flex ;
+            align-items: center;
+            justify-content: center;
+        }
+    .breadcrumb {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .group-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .group-item {
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 25px;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .group-item:hover {
+      background: #eceff1;
+    }
+    .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1;
+        }
+        
+        .side-panel {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            z-index: 2;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-panel h2, .side-panel h3 {
+            margin: 10px 0;
+        }
+
+        .side-panel a {
+            display: block;
+            margin: 5px 0;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .side-panel a:hover {
+            color: #0073e6;
+        }
+  </style>
+    <script>
+      function togglePanel() {
+          const panel = document.querySelector('.side-panel');
+          const overlay = document.querySelector('.overlay');
+          if (panel.style.left === '0px') {
+              panel.style.left = '-250px';
+              overlay.style.display = 'none';
+          } else {
+              panel.style.left = '0px';
+              overlay.style.display = 'block';
+          }
+      }
+  </script>
+</head>
+<body>
+  <div class="side-panel">
+    <h2>My Schedule</h2>
+    <a href="./inputsc.html">Input Schedule</a>
+    <a href="./editsc.html">Edit Schedule</a>
+    <a href="">Delete Schedule</a>
+    <h3>Groups</h3>
+    <a href="./creategrp.html">Create Group</a>
+    <a href="./viewgroup.html">View Group</a>
+</div>
+    <div class="header">
+        <img src="/images/icon.png" alt="Logo" onclick="togglePanel()">
+        <div class="breadcrumb">
+            <strong>Dashboard &gt; Groups &gt; Create Group</strong>
+        </div>
+        <div class="username">
+            <p>username</p>
+            <img src="/images/profile.png" alt="User Icon">
+        </div>
+    </div>
+  <div class="container">
+
+
+    <main>
+      <div class="group-list">
+        <div class="group-item">DBMS Group Project</div>
+        <div class="group-item">COUMPUTER NETWORKS Group Project</div>
+        <div class="group-item">OS Study Session</div>
+        <div class="group-item">PYTHON Study Session</div>
+        <div class="group-item">Maths Group Project</div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

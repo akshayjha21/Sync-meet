@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #cdffd8 20%, #94b9ff 90%);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background: white;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .navbar img {
+            height: 30px;
+        }
+        
+
+        .navbar .links-left,
+        .navbar .links-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .links-left a,
+        .navbar .links-right a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+
+        .navbar .links-left{
+            align-items: left;
+            margin-left: 0px;
+            width: 80%;
+        }
+        .navbar .links-right{
+            align-items: right;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px);
+        }
+
+        .form-box {
+            background: linear-gradient(to right, #e0faff, #c0e4ff);
+            border: 2px solid #666;
+            border-radius: 20px;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-box h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #666;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            border-radius: 15px;
+            height: 100px;
+            resize: none;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background-color: white;
+            border: 2px solid #666;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #b2f7ef;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="/images/icon.png" alt="Logo">
+        <div class="links-left">
+            <a href="./index.html">Home</a>
+            <a href="./features.html">Features</a>
+            <a href="./about.html">About</a>
+            <a href="./cont.html">Contact Us</a>
+        </div>
+        
+        <div class="links-right">
+            <a href="./sign.html">Sign In</a>
+            <a href="./sign.html">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Contact Us Form -->
+    <div class="container">
+        <div class="form-box">
+            <h1>Contact Us</h1>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="note" placeholder="Your note" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Add event listener to the form
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get input values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const note = document.getElementById('note').value;
+
+            // Check if all fields are filled (you can also perform further validation here)
+            if (name && email && note) {
+                alert(`Thank you, ${name}! Your message has been sent.`);
+                // Optionally, clear the form after submission
+                document.getElementById('contactForm').reset();
+            } else {
+                alert('Please fill out all the fields.');
+            }
+        });
+    </script>
+</body>
+</html>
