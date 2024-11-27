@@ -1,0 +1,26 @@
+{
+  "name": "project-exhi",
+  "version": "1.0.0",
+  "description": "sync-meet project",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "express",
+    "mongoose"
+  ],
+  "author": "akshay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "node": "^20.18.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^8.8.2",
+    "nodemon": "^3.1.7"
+  }
+}
