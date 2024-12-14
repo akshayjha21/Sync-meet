@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Project</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(90deg, #c0fdfb, #a0c4ff);
+      color: #000;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .username {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .username img {
+            height: 24px;
+            margin-left: 5px;
+        }
+
+        .side-panel {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            z-index: 2;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-panel h2, .side-panel h3 {
+            margin: 10px 0;
+        }
+
+        .side-panel a {
+            display: block;
+            margin: 5px 0;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .side-panel a:hover {
+            color: #0073e6;
+        }
+        .breadcrumb {
+            text-align: left;
+            margin-left: 0px;
+        }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .content {
+      display: flex;
+      gap: 20px;
+    }
+
+    .team-members {
+      flex: 1;
+      display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .team-members h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .team-members ul {
+        list-style: none;
+
+        padding: 0;
+        margin: 0;
+    }
+
+    .team-members ul li {
+      margin-bottom: 5px;
+      font-size: 20px;
+    }
+
+    .free-slots {
+      flex: 3;
+      margin-right: 10px;
+    }
+
+    .free-slots h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .table {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      border-collapse: collapse;
+    }
+
+    .table div {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .header-cell {
+      background: #c8e6c9;
+      font-weight: bold;
+    }
+
+    .time-cell {
+      background: #e3f2fd;
+      font-weight: bold;
+    }
+
+    .highlight {
+      background: #bbdefb;
+    }
+
+    .highlight-strong {
+      background: #3eea52;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function toggleCellSelection(cell) {
+        cell.classList.toggle('selected');
+    }
+</script>
+<script>
+    function togglePanel() {
+        const panel = document.querySelector('.side-panel');
+        const overlay = document.querySelector('.overlay');
+        if (panel.style.left === '0px') {
+            panel.style.left = '-250px';
+            overlay.style.display = 'none';
+        } else {
+            panel.style.left = '0px';
+            overlay.style.display = 'block';
+        }
+    }
+</script>
+</head>
+<body>
+    <div class="overlay" onclick="togglePanel()"></div>
+    
+    <div class="header">
+        
+    <img src="/images/icon.png" alt="Logo" onclick="togglePanel()">
+    <div class="breadcrumb">
+        <strong>Dashboard &gt; My Schedule &gt; Edit Schedule</strong>
+    </div>
+    <div class="username">
+            username
+            <img src="/images/profile.png" alt="User Icon">
+        </div>
+        
+    </div>
+    <div class="side-panel">
+        <h2>My Schedule</h2>
+        <a href="./inputsc.html">Input Schedule</a>
+        <a href="./editsc.html">Edit Schedule</a>
+        <a href="">Delete Schedule</a>
+        <h3>Groups</h3>
+        <a href="./creategrp.html">Create Group</a>
+        <a href="./viewgroup.html">View Group</a>
+    </div>
+    
+
+    <div class="content">
+      <div class="team-members">
+        <h2>Team Members</h2>
+        <ul>
+          <li>Akshay</li>
+          <li>Anubhavi</li>
+          <li>Kanishka</li>
+          <li>Lakshya</li>
+          <li>Esha</li>
+        </ul>
+      </div>
+
+      <div class="free-slots">
+        <h2>Free Slots</h2>
+        <div class="table">
+          <!-- Header -->
+          <div class="header-cell">START</div>
+          <div class="header-cell">8:30</div>
+          <div class="header-cell">10:05</div>
+          <div class="header-cell">11:40</div>
+          <div class="header-cell">13:15</div>
+          <div class="header-cell">14:50</div>
+          <div class="header-cell">16:25</div>
+          <div class="header-cell">18:00</div>
+
+          <div class="header-cell">END</div>
+          <div class="header-cell">10:00</div>
+          <div class="header-cell">11:35</div>
+          <div class="header-cell">13:10</div>
+          <div class="header-cell">14:45</div>
+          <div class="header-cell">16:20</div>
+          <div class="header-cell">17:55</div>
+          <div class="header-cell">19:30</div>
+
+          <!-- Data -->
+          <div class="time-cell">MON</div>
+          <div>A11</div>
+          <div class="highlight">B11</div>
+          <div>C11</div>
+          <div>A21</div>
+          <div>A14</div>
+          <div>B21</div>
+          <div>C21</div>
+
+          <div class="time-cell">TUE</div>
+          <div>D11</div>
+          <div>E11</div>
+          <div>F11</div>
+          <div>D21</div>
+          <div>E14</div>
+          <div>E21</div>
+          <div>F21</div>
+
+          <div class="time-cell">WED</div>
+          <div>A12</div>
+          <div>B12</div>
+          <div class="highlight-strong">C12</div>
+          <div>A22</div>
+          <div class="highlight-strong">B14</div>
+          <div>B22</div>
+          <div>A24</div>
+
+          <div class="time-cell">THU</div>
+          <div>D12</div>
+          <div>E12</div>
+          <div>F12</div>
+          <div>D22</div>
+          <div>F14</div>
+          <div>E22</div>
+          <div>F22</div>
+
+          <div class="time-cell">FRI</div>
+          <div>A13</div>
+          <div class="highlight-strong">B13</div>
+          <div>C13</div>
+          <div>A23</div>
+          <div class="highlight-strong">C14</div>
+          <div>B23</div>
+          <div>C23</div>
+
+          <div class="time-cell">SAT</div>
+          <div>D13</div>
+          <div>E13</div>
+          <div>F13</div>
+          <div>D23</div>
+          <div>D24</div>
+          <div>E23</div>
+          <div>F23</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

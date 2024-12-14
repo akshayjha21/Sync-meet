@@ -1,26 +1,20 @@
 {
-  "name": "project-exhi",
+  "name": "sync-meet",
   "version": "1.0.0",
-  "description": "sync-meet project",
+  "description": "project exhibition",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "keywords": [
-    "express",
-    "mongoose"
-  ],
   "author": "akshay",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1",
-    "node": "^20.18.1"
-  },
-  "devDependencies": {
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
-    "mongoose": "^8.8.2",
-    "nodemon": "^3.1.7"
+    "express": "^4.21.2",
+    "mongoose": "^8.9.0",
+    "nodemon": "^3.1.9"
   }
 }
