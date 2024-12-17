@@ -79,17 +79,16 @@ app.post('/save-schedule', async (req, res) => {
     }
 });
 
-// Compare User Slots with Predefined Slots
+// Compare Slots for Multiple Users and Return Uncommon Slots
 app.post('/compare-schedules', async (req, res) => {
-    const { username1, username2 } = req.body;
+    const { usernames } = req.body;
 
     try {
-        // Fetch schedules of both users
-        const user1 = await Schedule.findOne({ username: username1 });
-        const user2 = await Schedule.findOne({ username: username2 });
+        // Fetch schedules for all users
+        const userSchedules = await Schedule.find({ username: { $in: usernames } });
 
-        if (!user1 || !user2) {
-            return res.status(404).json({ error: 'One or both users not found' });
+        if (userSchedules.length !== usernames.length) {
+            return res.status(404).json({ error: 'One or more users not found' });
         }
 
         // Fetch predefined slots
@@ -98,19 +97,22 @@ app.post('/compare-schedules', async (req, res) => {
             return res.status(404).json({ error: 'Predefined slots not found' });
         }
 
-        // Find uncommon slots with respect to predefined slots
-        const user1Uncommon = predefined.slots.filter(slot => !user1.slots.includes(slot));
-        const user2Uncommon = predefined.slots.filter(slot => !user2.slots.includes(slot));
+        // Collect all user-selected slots
+        const allUserSlots = userSchedules.map(user => user.slots);
 
-        res.json({
-            user1Uncommon,
-            user2Uncommon,
-        });
+        // Flatten all user-selected slots into a single array
+        const mergedSlots = allUserSlots.flat();
+
+        // Find uncommon slots by comparing merged slots with predefined slots
+        const uncommonSlots = predefined.slots.filter(slot => !mergedSlots.includes(slot));
+
+        res.json({ uncommonSlots });
     } catch (err) {
         res.status(500).json({ error: 'Error comparing schedules' });
     }
 });
 
+// Fetch Predefined Slots
 app.get('/predefined-slots', async (req, res) => {
     const predefined = await PredefinedSlot.findOne();
     if (!predefined) {
@@ -118,8 +120,6 @@ app.get('/predefined-slots', async (req, res) => {
     }
     res.json(predefined.slots);
 });
-
-
 
 // Start Server
 const PORT = process.env.PORT || 5000;
